@@ -2,14 +2,9 @@
 
 # Extract file contents
 function extract {
-    if [ -z "$1" ]; then
+    if [[ -z "$1" || ! -f $1 ]]; then
         echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
-        exit
-    fi
-
-    if [ ! -f $1 ]; then
-        echo "$1 - file does not exist"
-        exit
+        return
     fi
 
     case $1 in
@@ -35,6 +30,11 @@ function extract {
 
 # Create a data URL from a file
 function dataurl() {
+    if [[ -z "$1" || ! -f $1 ]]; then
+        echo "Usage: dataurl <path/file_name>"
+        return
+    fi
+
 	local mimeType=$(file -b --mime-type "$1");
 	if [[ $mimeType == text/* ]]; then
 		mimeType="${mimeType};charset=utf-8";
