@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Prepend
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Append
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/go/bin:~/.go/bin
+export PATH="$PATH:$FLYCTL_INSTALL/bin"
+export PATH="$PATH:/opt/scripts"
+export PATH="$PATH:$HOME/.local/share/fnm"
