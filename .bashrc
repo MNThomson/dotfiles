@@ -117,6 +117,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export GOPATH=~/.go
 export FLYCTL_INSTALL="$HOME/.fly"
+export CURL_HOME=~/.config/curl
 
 complete -C /usr/bin/terraform terraform
 
