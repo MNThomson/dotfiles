@@ -1,0 +1,20 @@
+{
+    "BetterRoleColors": true,
+    "ZeresPluginLibrary": true,
+    "PluginRepo": true,
+    "BDFDB": true,
+    "SplitLargeMessages": true,
+    "HideDisabledEmojis": true,
+    "TypingIndicator": true,
+    "BugReportHelper": false,
+    "ThemeRepo": true,
+    "CopyRawMessage": true,
+    "DisableStickerSuggestions": false,
+    "DoNotTrack": true,
+    "DoubleClickVoiceChannels": true,
+    "FileViewer": true,
+    "HideMutedCategories": false,
+    "FreeEmojis": true,
+    "WriteUpperCase": false,
+    "ShowHiddenChannels": false
+}
