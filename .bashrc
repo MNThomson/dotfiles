@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -64,14 +62,10 @@ xterm* | rxvt*)
 esac
 
 # Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,exports,aliases,functions}; do
+for file in ~/.{exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -84,7 +78,18 @@ if ! shopt -oq posix; then
     fi
 fi
 
-complete -C /usr/bin/terraform terraform
+exists() {
+    # If command or file exists
+    if [ -x "$(command -v $1)" ] || [ -e "$1" ]; then
+        return
+    fi
+    return -1
+}
 
-eval "$(starship init bash)"
-eval "`fnm env`"
+
+exists starship && eval "$(starship init bash)"
+exists fnm && eval "$(fnm env)"
+exists ~/.gvm && source ~/.gvm/scripts/gvm
+
+exists terraform && complete -C /usr/bin/terraform terraform
+exists ~/.ssh/config && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
