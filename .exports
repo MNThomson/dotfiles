@@ -22,9 +22,8 @@ export HISTFILE="${XDG_STATE_HOME}/bash/history"
 export HISTCONTROL='ignoreboth';
 
 # Misc
-export GOPATH=~/.go
-export CURL_HOME=~/.config/curl
-export WGETRC=~/.config/wget/.wgetrc
+export CURL_HOME="$XDG_CONFIG_HOME/curl"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export ANDROID_HOME="$XDG_DATA_HOME/android"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
