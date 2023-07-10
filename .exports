@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# XDG ENV VARS
+export XDG_CACHE_HOME="$HOME/.cache" 
+export XDG_CONFIG_HOME="$HOME/.config" 
+export XDG_DATA_HOME="$HOME/.local/share" 
+export XDG_LIB_HOME="$HOME/.local/lib" 
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # Make vim the default editor.
 export EDITOR='nvim';
 
@@ -11,6 +18,5 @@ export HISTCONTROL='ignoreboth';
 
 # Misc
 export GOPATH=~/.go
-export FLYCTL_INSTALL="$HOME/.fly"
 export CURL_HOME=~/.config/curl
 export WGETRC=~/.config/wget/.wgetrc
