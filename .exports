@@ -17,6 +17,7 @@ export EDITOR='nvim';
 # Increase Bash history size. Allow 32³ entries; the default is 500.
 export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
 
@@ -24,6 +25,18 @@ export HISTCONTROL='ignoreboth';
 export GOPATH=~/.go
 export CURL_HOME=~/.config/curl
 export WGETRC=~/.config/wget/.wgetrc
+export ANDROID_HOME="$XDG_DATA_HOME/android"
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 
 ################################
@@ -32,9 +45,8 @@ export WGETRC=~/.config/wget/.wgetrc
 
 # Prepend
 export PATH="$HOME/.local/share/fnm:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 
 # Append
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/go/bin:~/.go/bin
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/scripts"
