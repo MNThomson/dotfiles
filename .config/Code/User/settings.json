@@ -1,14 +1,38 @@
 {
-  "security.workspace.trust.untrustedFiles": "open",
-  "workbench.iconTheme": "material-icon-theme",
-  "redhat.telemetry.enabled": false,
+  "editor.minimap.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.fontFamily": "Firacode Nerd Font mono",
+  "terminal.integrated.scrollback": 2000,
+  "window.titleBarStyle": "custom",
+
+  "C_Cpp.autocompleteAddParentheses": true,
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+  "C_Cpp.default.compilerPath": "/bin/clang++-15",
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+  "C_Cpp.intelliSenseEngine": "Tag Parser",
+
+  // Extension Settings
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "typst-lsp.exportPdf": "never",
+
+  // TELEMETRY
+  "telemetry.telemetryLevel": "off",
+  "redhat.telemetry.enabled": false,
+
+  // Lang settings
   "files.associations": {
     "*.java": "java"
   },
-
-  "editor.formatOnSave": true,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -35,12 +59,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.titleBarStyle": "custom",
-
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "editor.lineNumbers": "relative",
   "[python]": {},
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -50,16 +68,7 @@
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "explorer.confirmDragAndDrop": false,
-  "telemetry.telemetryLevel": "off",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "terminal.integrated.fontFamily": "Firacode Nerd Font mono",
-  "terminal.integrated.scrollback": 2000,
-  "typst-lsp.exportPdf": "never",
-  "C_Cpp.default.compilerPath": "/bin/clang++-15",
-  "C_Cpp.autocompleteAddParentheses": true,
-  "C_Cpp.default.cppStandard": "c++20",
-  "C_Cpp.default.cStandard": "c23",
-  "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true
+  }
+
+  // NEW SETTINGS TO CLEAN UP
 }
