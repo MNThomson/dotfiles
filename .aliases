@@ -24,6 +24,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# Changing config dirs
+alias gdb='gdb -n -x "$XDG_CONFIG_HOME/gdb/init"'
+alias rustscan='rustscan -c "$XDG_CONFIG_HOME/rustscan/rustscan.toml"'
+
+
 alias dk='docker kill $(docker ps -a -q)'
 alias dc="docker images -a | awk '{print $3}' | xargs docker rmi --force; docker images"
 alias dex='function __myalias() { docker exec -it $1 bash; unset -f __myalias; }; __myalias'
@@ -32,9 +37,6 @@ alias dvolume='docker rm -f $(docker ps -a -q)'
 alias bigdiff='git fetch origin master:master && git diff `git merge-base master $(git rev-parse --abbrev-ref HEAD)`..$(git rev-parse --abbrev-ref HEAD)'
 alias opendiff='git fetch origin master:master && git diff `git merge-base master $(git rev-parse --abbrev-ref HEAD)`..$(git rev-parse --abbrev-ref HEAD) | grep "diff --git a/" | cut -d " " -f 3 | sed "s/..//" | xargs code'
 alias gl1='git log --oneline --graph -10 --decorate'
-alias gs='git status'
-alias gd='git diff | git-split-diffs --color | less -RFX'
-alias gdc='git diff --cached | git-split-diffs --color | less -RFX'
 alias gdifftree='git diff-tree --no-commit-id --name-only -r $1'
 alias gbc="git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | grep -v '\*' #| xargs -r git branch -D"
 alias gad="git commit --amend --no-edit --date=now"
