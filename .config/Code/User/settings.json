@@ -1,8 +1,8 @@
 {
-  "editor.minimap.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -34,9 +34,7 @@
     "*.java": "java"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
