@@ -31,5 +31,15 @@ return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return {
+        theme = 'gruvbox'
+      }
+    end,
   }
 }
