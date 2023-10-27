@@ -19,4 +19,8 @@ nmap("<c-j>", ":wincmd j<CR>", {})
 nmap("<c-h>", ":wincmd h<CR>", {})
 nmap("<c-l>", ":wincmd l<CR>", {})
 
+nmap("<UP>", "<NOP>", {})
+nmap("<DOWN>", "<NOP>", {})
+nmap("<RIGHT>", "<NOP>", {})
+nmap("<LEFT>", "<NOP>", {})
 
