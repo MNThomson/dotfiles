@@ -47,5 +47,6 @@ alias coauthor='git log --pretty="Co-authored-by: %an <%ce>" | sort -u | fzf #| 
 alias fs='du -hc --max-depth=1'
 alias temp="paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'"
 alias tldr='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias up='python3 -m http.server'
