@@ -1,9 +1,11 @@
 return {
   {
-    "eandrju/cellular-automaton.nvim"
+    "eandrju/cellular-automaton.nvim",
+    event = "VeryLazy"
   },
 
   {
-    "seandewar/killersheep.nvim"
-  }
+    "seandewar/killersheep.nvim",
+    event = "VeryLazy"
+  },
 }
