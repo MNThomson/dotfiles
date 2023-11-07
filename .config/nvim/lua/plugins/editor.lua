@@ -4,8 +4,10 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
+      { "<leader>f", desc = "+file" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep (root dir)" },
+      { "<leader>g", desc = "+git" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
     },
@@ -41,5 +43,15 @@ return {
         theme = 'gruvbox'
       }
     end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {}
   }
 }
