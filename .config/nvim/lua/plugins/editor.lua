@@ -6,8 +6,8 @@ return {
     keys = {
       { "<leader>f", desc = "+file" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
+      { "<leader>fe", "<cmd>Explore<cr>", desc = "Explore (Netrw)"},
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep (root dir)" },
-      { "<leader>g", desc = "+git" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
     },
@@ -27,6 +27,12 @@ return {
         untracked = { text = "▎" },
       },
     },
+    keys = {
+      { "<leader>g", desc = "+git" },
+      { "<leader>gh", desc = "+hunk" },
+      { "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", desc = "stage hunk" },
+      { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "unstage hunk" },
+    }
   },
 
   {
