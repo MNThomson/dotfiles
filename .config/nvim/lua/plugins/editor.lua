@@ -5,12 +5,29 @@ return {
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
       { "<leader>f", desc = "+file" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
+      { "<leader>ff", "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>", desc = "Find Files (root dir)" },
       { "<leader>fe", "<cmd>Explore<cr>", desc = "Explore (Netrw)"},
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep (root dir)" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
     },
+    config = function()
+      require('telescope').setup{
+        defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+            '--ignore-vcs',
+          },
+        }
+      }
+    end,
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
 
