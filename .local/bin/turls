@@ -1,0 +1,10 @@
+#!/bin/bash
+
+url=`capture-all-panes | egrep -o 'https?://[^ ]+' | sort | uniq | fzf --header tmux-urls`
+
+if [ -z "$url" ]; then
+    echo "no url was selected"
+    exit 1
+fi
+
+firefox ${url}
