@@ -72,6 +72,10 @@
 [diff "bin"]
 	textconv = hexdump -v -C # Use `hexdump` to diff binary files
 
+[diff "sqlite3"]
+    binary = true
+    textconv = "echo .dump | sqlite3"
+
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
