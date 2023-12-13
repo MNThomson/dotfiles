@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+    # ask the which directory to start in
+    choice=$(find ~/proj -mindepth 1 -maxdepth 1 -type d -printf "%T@ %P\n" | sort -nr | cut -d' ' -f2- | fzf --preview "bat --color=always --style=numbers --line-range=:256 $HOME/proj/{1}/README.md 2>/dev/null || echo 'No README'" --preview-window=right,70%)
+    path_name="$HOME/proj/$choice"
+else
+    path_name="$(pwd)/${1-default}"
+fi
+
+if [ -z "$path_name" ]; then
+    # operation cancelled by user
+    exit 1
+fi
+session_name="$(basename "$(realpath "$path_name")")"
+
+create_session() {
+    tmux new-session -Ad -s "$session_name" -c "$path_name" -x "$(tput cols)" -y "$(tput lines)";
+    tmux split-window -vb -t "$session_name" -c "$path_name" -p 80;
+    tmux send-keys -t "$session_name" "nvim" Enter;
+}
+
+if ! tmux has-session -t "=$session_name"; then
+    (TMUX='' create_session)
+fi
+
+if [ -z "${TMUX-}" ]; then
+    tmux attach -t "$session_name"
+else
+    tmux switch-client -t "$session_name"
+fi
