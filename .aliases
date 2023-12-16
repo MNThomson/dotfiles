@@ -9,7 +9,6 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
 
 alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
-alias p='find ~/proj -mindepth 1 -maxdepth 1 -type d -printf "%P\n" | fzf --preview "bat --color=always --style=numbers --line-range=:500 ~/proj/{1}/README.md 2>/dev/null || bat --color=always --style=numbers --line-range=:500 <<< \"No README\"" --preview-window=right,70% | xargs -I {} code ~/proj/{}'
 
 alias ll='ls -alhF'
 alias la='ls -A'
@@ -44,9 +43,10 @@ alias gb='git branch --sort=-committerdate | sed "s/*/\ /g" | fzf --header "Chec
 alias pr="GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout"
 alias coauthor='git log --pretty="Co-authored-by: %an <%ce>" | sort -u | fzf #| xargs -I @ bash -c "git commit --amend -m \"$(git log --format=%B -n1)\" -m \"@\""'
 
+alias up="miniserve . -u -i $(ip -4 addr show wlp9s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') -p 8000 -q"
 alias fs='du -hc --max-depth=1'
 alias temp="paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'"
 alias tldr='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias oha='oha --latency-correction --disable-keepalive'
 alias up='python3 -m http.server'
