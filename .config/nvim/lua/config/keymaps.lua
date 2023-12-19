@@ -6,6 +6,11 @@ map("n", "<c-j>", ":wincmd j<CR>", {})
 map("n", "<c-h>", ":wincmd h<CR>", {})
 map("n", "<c-l>", ":wincmd l<CR>", {})
 
+-- Center screen on big jump
+map("n", "<c-u>", "<c-u>zz", {})
+map("n", "<c-d>", "<c-d>zz", {})
+
+-- Disable the arrow keys
 map({"n", "i"}, "<UP>", "<NOP>", {})
 map({"n", "i"}, "<DOWN>", "<NOP>", {})
 map({"n", "i"}, "<RIGHT>", "<NOP>", {})
