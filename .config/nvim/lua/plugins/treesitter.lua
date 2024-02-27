@@ -31,6 +31,7 @@ return {
           "rust",
           "tsx",
           "typescript",
+          "typst",
           "tsx",
           "vim",
           "vimdoc",
@@ -44,7 +45,7 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
     version = false,
-    dependencies = {"nvim-treesitter/nvim-treesitter"},
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require('treesitter-context').setup({
         enable = true,
