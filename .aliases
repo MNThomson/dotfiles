@@ -12,16 +12,17 @@ alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
 
 alias ll='ls -alhF'
 alias la='ls -A'
-alias l='ls -CF'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+alias cat='bat --paging=never --theme gruvbox-dark --style plain'
+alias ls='eza'
 
 # Changing config dirs
 alias gdb='gdb -n -x "$XDG_CONFIG_HOME/gdb/init"'
@@ -38,7 +39,6 @@ alias opendiff='git fetch origin master:master && git diff `git merge-base maste
 alias gl1='git log --oneline --graph -10 --decorate'
 alias gdifftree='git diff-tree --no-commit-id --name-only -r $1'
 alias gbc="git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | grep -v '\*' #| xargs -r git branch -D"
-alias gad="git commit --amend --no-edit --date=now"
 alias gb='git branch --sort=-committerdate | sed "s/*/\ /g" | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="➔" | xargs git checkout'
 alias pr="GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout"
 alias coauthor='git log --pretty="Co-authored-by: %an <%ce>" | sort -u | fzf #| xargs -I @ bash -c "git commit --amend -m \"$(git log --format=%B -n1)\" -m \"@\""'
