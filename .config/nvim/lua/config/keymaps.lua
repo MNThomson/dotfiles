@@ -11,10 +11,10 @@ map("n", "<c-u>", "<c-u>zz", {})
 map("n", "<c-d>", "<c-d>zz", {})
 
 -- Disable the arrow keys
-map({"n", "i"}, "<UP>", "<NOP>", {})
-map({"n", "i"}, "<DOWN>", "<NOP>", {})
-map({"n", "i"}, "<RIGHT>", "<NOP>", {})
-map({"n", "i"}, "<LEFT>", "<NOP>", {})
+map({ "n", "i" }, "<UP>", "<NOP>", {})
+map({ "n", "i" }, "<DOWN>", "<NOP>", {})
+map({ "n", "i" }, "<RIGHT>", "<NOP>", {})
+map({ "n", "i" }, "<LEFT>", "<NOP>", {})
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
@@ -28,3 +28,11 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+-- System clipboard
+map("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+map("v", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+map("n", "<leader>P", '"+P', { desc = "Paste from system clipboard above" })
+map("v", "<leader>P", '"+P', { desc = "Paste from system clipboard above" })
+map("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+map("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+map("n", "<leader>Y", '"+y$', { desc = "Yank line to system clipboard" })

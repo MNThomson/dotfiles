@@ -4,10 +4,6 @@ alias t="terraform"
 alias k='kubectl'
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Provide autocompletion for above aliases
-. ~/.local/bin/complete_alias
-complete -F _complete_alias "${!BASH_ALIASES[@]}"
-
 alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
 
 alias ll='ls -alhF'
