@@ -43,7 +43,6 @@ return {
                 ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls" },
                 handlers = { lsp.default_setup }
             }
-            vim.lsp.set_log_level("debug")
             require('lspconfig').rust_analyzer.setup({
                 settings = {
                     ["rust-analyzer"] = {

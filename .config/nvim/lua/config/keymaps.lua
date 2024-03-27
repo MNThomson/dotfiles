@@ -36,3 +36,7 @@ map("v", "<leader>P", '"+P', { desc = "Paste from system clipboard above" })
 map("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 map("n", "<leader>Y", '"+y$', { desc = "Yank line to system clipboard" })
+
+-- Copy filename
+map("n", "<leader>fy", function() vim.fn.setreg('+', vim.fn.expand('%')) end,
+    { expr = true, desc = "Yank filename to system clipboard" })
