@@ -25,6 +25,14 @@ return {
                         '--hidden',
                         '--ignore-vcs',
                     },
+                    theme = "center",
+                    sorting_strategy = "ascending",
+                    border_chars = {},
+                    layout_config = {
+                        horizontal = {
+                            prompt_position = "top",
+                        }
+                    }
                 }
             }
         end,
