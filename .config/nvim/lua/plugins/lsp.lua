@@ -86,6 +86,11 @@ return {
                     },
                 },
             })
+            require('lspconfig').typst_lsp.setup({
+                settings = {
+                    exportPdf = "never"
+                }
+            })
         end
     },
 
