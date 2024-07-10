@@ -1,29 +1,27 @@
+# Single letter aliases
 alias d='docker'
 alias g='git'
 alias t="terraform"
 alias k='kubectl'
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
+
+# Existing commands
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias cat='bat --paging=never --theme gruvbox-dark --style plain'
+alias ls='eza'
+alias tldr='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias oha='oha --latency-correction --disable-keepalive'
 
 alias ll='ls -alhF'
 alias la='ls -A'
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-alias cat='bat --paging=never --theme gruvbox-dark --style plain'
-alias ls='eza'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Changing config dirs
 alias gdb='gdb -n -x "$XDG_CONFIG_HOME/gdb/init"'
 alias rustscan='rustscan -c "$XDG_CONFIG_HOME/rustscan/rustscan.toml"'
-
 
 alias dk='docker kill $(docker ps -a -q); docker rm $(docker ps -a -q)'
 alias dc="docker images -a | awk '{print $3}' | xargs docker rmi --force; docker images"
@@ -42,7 +40,4 @@ alias coauthor='git log --pretty="Co-authored-by: %an <%ce>" | sort -u | fzf #| 
 alias up="miniserve . -u -i $(ip -4 addr show wlp9s0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') -p 8000 -q"
 alias fs='du -hc --max-depth=1'
 alias temp="paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) | column -s $'\t' -t | sed 's/\(.\)..$/.\1°C/'"
-alias tldr='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
-alias oha='oha --latency-correction --disable-keepalive'
 alias wifi='nmcli device wifi show-password'
