@@ -56,9 +56,9 @@ return {
       { "<leader>gb",  "<cmd>Gitsigns blame_line<CR>",      desc = "blame line" },
       { "<leader>gl",  "<cmd>Gitsigns setloclist<CR>",      desc = "show jump list" },
       { "<leader>gh",  desc = "+hunk" },
-      { "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>",      desc = "stage hunk" },
-      { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "unstage hunk" },
-      { "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>",      desc = "reset hunk" },
+      { "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>",      mode = { "n", "v" },    desc = "stage hunk" },
+      { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<CR>", mode = { "n", "v" },    desc = "unstage hunk" },
+      { "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>",      mode = { "n", "v" },    desc = "reset hunk" },
       { "<leader>ghn", "<cmd>Gitsigns next_hunk<CR>",       desc = "next hunk" },
       { "<leader>ghp", "<cmd>Gitsigns prev_hunk<CR>",       desc = "next hunk" },
     }
@@ -77,7 +77,7 @@ return {
       theme = 'gruvbox',
       sections = {
         lualine_c = {
-          { 'filename', path = 1 }
+          { 'filename', path = 1 },
         },
       },
     }
