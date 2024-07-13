@@ -1,91 +1,92 @@
 [alias]
-	c = commit
-	s = status
-	a = add -p
-	d = diff
-	dc = diff --cached
-	amend = commit --amend --all --no-edit
-	co = checkout
+  c = commit
+  s = status
+  a = add -p
+  d = -c diff.external=difft diff --ext-diff
+  dc = -c diff.external=difft diff --ext-diff --cached
+  amend = commit --amend --all --no-edit
+  co = checkout
 
-	# see all the commits related to a file, with the diff of the changes
-	fl = log -u
+  # see all the commits related to a file, with the diff of the changes
+  fl = log -u
 
-	# Get statistics on lines of code
-	sloc = !"tokei -C -s code"
+  # Get statistics on lines of code
+  sloc = !"tokei -C -s code"
 
-	summary = !"git log --numstat --format=\"\" \"$@\" | awk '{files += 1}{ins += $1}{del += $2} END{print \"total: \"files\" files, \"ins\" insertions(+) \"del\" deletions(-)\"}'"
+  summary = !"git log --numstat --format=\"\" \"$@\" | awk '{files += 1}{ins += $1}{del += $2} END{print \"total: \"files\" files, \"ins\" insertions(+) \"del\" deletions(-)\"}'"
 
-	# Essentially GitHub's compare view: show all 'ahead' changes (incl working tree) vs the merge-base
-	diffbranch = !"git diff $(git diffbase)"
-	# Diff of branch that's not checked out. Doesn't include working tree (but obv doesnt need to)
-	diffbranch-that = !"git diff origin/$(git mainormaster)...\"$1\" #"
-	# Show commit log of unique commits of this branch (not on main)
-	diffcommitsfrommain = !"git log --no-merges origin/$(git mainormaster).."
-	#                                                                     ^^ also, 2 vs 3 dots: so important. https://stackoverflow.com/a/48681527
+  # Essentially GitHub's compare view: show all 'ahead' changes (incl working tree) vs the merge-base
+  diffbranch = !"git diff $(git diffbase)"
+  # Diff of branch that's not checked out. Doesn't include working tree (but obv doesnt need to)
+  diffbranch-that = !"git diff origin/$(git mainormaster)...\"$1\" #"
+  # Show commit log of unique commits of this branch (not on main)
+  diffcommitsfrommain = !"git log --no-merges origin/$(git mainormaster).."
+  #                                                                     ^^ also, 2 vs 3 dots: so important. https://stackoverflow.com/a/48681527
 
-	# List contributors with number of commits.
-	contributors = shortlog --summary --numbered
+  # List contributors with number of commits.
+  contributors = shortlog --summary --numbered
 
-	# List current lines of files written by each contributor
-	contributions = !"git log --pretty='%an' | sort -u | while read -r author; do git ls-tree -r $(git mainormaster) --name-only | parallel -j 4 \"git blame {} | grep -I \\\"$author\\\"\" | wc -l | xargs echo \"$author:\" ; done"
+  # List current lines of files written by each contributor
+  contributions = !"git log --pretty='%an' | sort -u | while read -r author; do git ls-tree -r $(git mainormaster) --name-only | parallel -j 4 \"git blame {} | grep -I \\\"$author\\\"\" | wc -l | xargs echo \"$author:\" ; done"
 
-	# Show the user email for the current repository.
-	whoami = config user.email
+  # Show the user email for the current repository.
+  whoami = config user.email
 
 
-	# Two utils:
-	#   What's the ancestor commit this branch shares with main?
-	diffbase = !"git merge-base origin/$(git mainormaster) HEAD"
-	#   Is it a `main` or a `master` repo?
-	mainormaster = !"git branch --format '%(refname:short)' --sort=-committerdate --list master main | head -n1"
+  # Two utils:
+  #   What's the ancestor commit this branch shares with main?
+  diffbase = !"git merge-base origin/$(git mainormaster) HEAD"
+  #   Is it a `main` or a `master` repo?
+  mainormaster = !"git branch --format '%(refname:short)' --sort=-committerdate --list master main | head -n1"
 
 [apply]
-	whitespace = fix # Detect whitespace errors when applying a patch
+  whitespace = fix # Detect whitespace errors when applying a patch
 
 [branch]
-	sort = -committerdate # Show most recently changed branches first
+  sort = -committerdate # Show most recently changed branches first
 
 [core]
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error.
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
 
-	# Speed up commands involving untracked files such as `git status`.
-	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
+  # Speed up commands involving untracked files such as `git status`.
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
 
 [color]
-	ui = auto # Use colors in capable Git commands
+  ui = auto # Use colors in capable Git commands
 
 [commit]
-	# https://help.github.com/articles/signing-commits-using-gpg/
-	# gpgsign = true
+  # https://help.github.com/articles/signing-commits-using-gpg/
+  # gpgsign = true
 
 [diff]
-	renames = copies # Detect copies as well as renames
+  renames = copies # Detect copies as well as renames
+  #external = difft
 
 [diff "bin"]
-	textconv = hexdump -v -C # Use `hexdump` to diff binary files
+  textconv = hexdump -v -C # Use `hexdump` to diff binary files
 
 [diff "sqlite3"]
-    binary = true
-    textconv = "echo .dump | sqlite3"
+  binary = true
+  textconv = "echo .dump | sqlite3"
 
 [merge]
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 [push]
-	# https://git-scm.com/docs/git-config#git-config-pushdefault
-	default = simple
-	# Make `git push` push relevant annotated tags when pushing branches out.
-	followTags = true
-	autoSetupRemote = true
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+  default = simple
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
+  autoSetupRemote = true
 
 [init]
-	defaultBranch = master
+  defaultBranch = master
