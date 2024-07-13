@@ -13,24 +13,30 @@ return {
 
   {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
     config = true,
     keys = {
       { "<leader>h",  desc = "+harpoon" },
-      { "<leader>hm", "<cmd>lua require('harpoon.mark').add_file()<cr>",        desc = "Mark file with harpoon" },
-      { "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>",          desc = "Go to next harpoon mark" },
-      { "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>",          desc = "Go to previous harpoon mark" },
-      { "<leader>hh", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Show harpoon marks" },
-      { "<leader>hf", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",         desc = "Go to 1st harpoon mark" },
-      { "<leader>hd", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",         desc = "Go to 2nd harpoon mark" },
-      { "<leader>hs", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",         desc = "Go to 3rd harpoon mark" },
-      { "<leader>ha", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",         desc = "Go to 4th harpoon mark" },
-      { "<leader>hv", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>",         desc = "Go to 5th harpoon mark" },
-      { "<leader>hc", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>",         desc = "Go to 6th harpoon mark" },
-      { "<leader>hx", "<cmd>lua require('harpoon.ui').nav_file(7)<cr>",         desc = "Go to 7th harpoon mark" },
-      { "<leader>hz", "<cmd>lua require('harpoon.ui').nav_file(8)<cr>",         desc = "Go to 8th harpoon mark" },
+      {
+        "<leader>hh",
+        function()
+          require("harpoon").ui:toggle_quick_menu(require("harpoon"):list(),
+            { ui_max_width = 60, ui_width_ratio = 0.4 })
+        end,
+        desc = "Show harpoon marks"
+      },
+      { "<leader>hm", function() require("harpoon"):list():add() end,     desc = "Mark file with harpoon" },
+      { "<leader>hf", function() require("harpoon"):list():select(1) end, desc = "Go to 1st harpoon mark" },
+      { "<leader>hd", function() require("harpoon"):list():select(2) end, desc = "Go to 2nd harpoon mark" },
+      { "<leader>hs", function() require("harpoon"):list():select(3) end, desc = "Go to 3rd harpoon mark" },
+      { "<leader>ha", function() require("harpoon"):list():select(4) end, desc = "Go to 4th harpoon mark" },
+      { "<leader>hv", function() require("harpoon"):list():select(5) end, desc = "Go to 5th harpoon mark" },
+      { "<leader>hc", function() require("harpoon"):list():select(6) end, desc = "Go to 6th harpoon mark" },
+      { "<leader>hx", function() require("harpoon"):list():select(7) end, desc = "Go to 7th harpoon mark" },
+      { "<leader>hz", function() require("harpoon"):list():select(8) end, desc = "Go to 8th harpoon mark" },
     }
   },
 
