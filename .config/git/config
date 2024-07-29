@@ -2,10 +2,15 @@
   c = commit
   s = status
   a = add -p
+  b = !"git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ | fzf --header 'Checkout Recent Branch' --preview 'git diff {1} --color=always' --pointer='➔' | xargs git switch"
   d = -c diff.external=difft diff --ext-diff
   dc = -c diff.external=difft diff --ext-diff --cached
   amend = commit --amend --all --no-edit
   co = checkout
+  l = log --oneline --graph -10 --decorate
+
+  pr = !"GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout"
+  coauthor=!"git log --pretty='Co-authored-by: %an <%ce>' | sort -u | fzf"
 
   # see all the commits related to a file, with the diff of the changes
   fl = log -u
