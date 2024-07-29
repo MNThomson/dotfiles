@@ -83,7 +83,7 @@ exists() {
     if [ -x "$(command -v $1)" ] || [ -e "$1" ]; then
         return
     fi
-    return -1
+    return 1
 }
 
 
