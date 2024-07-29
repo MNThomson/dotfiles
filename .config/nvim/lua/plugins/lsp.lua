@@ -41,7 +41,7 @@ return {
 
       require("mason").setup {}
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls" },
+        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls", "terraformls" },
         handlers = { lsp.default_setup }
       }
       require('lspconfig').rust_analyzer.setup({
@@ -113,6 +113,7 @@ return {
           exportPdf = "never"
         }
       })
+      require('lspconfig').terraformls.setup({})
     end
   },
 
