@@ -1,13 +1,22 @@
 # Single letter aliases
-alias d='docker'
 alias t="terraform"
 alias k='kubectl'
 alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
 alias n='nvim'
 alias g='git'
 [ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git && __git_complete g __git_main
+
 alias c='cargo'
 if type -P rustup > /dev/null; then source <( rustup completions bash cargo ); fi
+
+d() {
+  case $1 in
+    "c") shift && docker compose "$@";;
+    *)
+      docker "$@"
+      ;;
+  esac
+}
 
 # Existing commands
 alias grep='grep --color=auto'
