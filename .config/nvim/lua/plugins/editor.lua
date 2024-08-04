@@ -53,14 +53,14 @@ return {
     },
     keys = {
       { "<leader>g",   desc = "+git" },
-      { "<leader>gb",  "<cmd>Gitsigns blame_line<CR>",      desc = "blame line" },
-      { "<leader>gl",  "<cmd>Gitsigns setloclist<CR>",      desc = "show jump list" },
+      { "<leader>gb",  "<cmd>Gitsigns blame_line<CR>",                                                            desc = "blame line" },
+      { "<leader>gl",  "<cmd>Gitsigns setloclist<CR>",                                                            desc = "show jump list" },
       { "<leader>gh",  desc = "+hunk" },
-      { "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>",      mode = { "n", "v" },    desc = "stage hunk" },
-      { "<leader>ghu", "<cmd>Gitsigns undo_stage_hunk<CR>", mode = { "n", "v" },    desc = "unstage hunk" },
-      { "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>",      mode = { "n", "v" },    desc = "reset hunk" },
-      { "<leader>ghn", "<cmd>Gitsigns next_hunk<CR>",       desc = "next hunk" },
-      { "<leader>ghp", "<cmd>Gitsigns prev_hunk<CR>",       desc = "next hunk" },
+      { "<leader>ghs", function() require("gitsigns").stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,      mode = { "n", "v" },    desc = "stage hunk" },
+      { "<leader>ghu", function() require("gitsigns").undo_stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, mode = { "n", "v" },    desc = "unstage hunk" },
+      { "<leader>ghr", function() require("gitsigns").reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,      mode = { "n", "v" },    desc = "reset hunk" },
+      { "<leader>ghn", "<cmd>Gitsigns next_hunk<CR>",                                                             desc = "next hunk" },
+      { "<leader>ghp", "<cmd>Gitsigns prev_hunk<CR>",                                                             desc = "next hunk" },
     }
   },
 
@@ -68,6 +68,9 @@ return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      signs = false
+    },
   },
 
   {
