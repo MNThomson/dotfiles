@@ -41,7 +41,7 @@ return {
 
       require("mason").setup {}
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls", "terraformls" },
+        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls", "terraformls", "typos_lsp" },
         handlers = { lsp.default_setup }
       }
       require('lspconfig').rust_analyzer.setup({
@@ -114,6 +114,7 @@ return {
         }
       })
       require('lspconfig').terraformls.setup({})
+      require('lspconfig').typoslsp.setup({})
     end
   },
 
