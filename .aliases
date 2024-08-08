@@ -3,6 +3,7 @@ alias t="terraform"
 alias k='kubectl'
 alias a='aws-vault exec -n "$(aws-vault list --credentials | fzf)"'
 alias n='nvim'
+alias z='zellij'
 alias g='git'
 [ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git && __git_complete g __git_main
 
