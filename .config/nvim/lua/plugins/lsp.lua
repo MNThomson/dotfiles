@@ -44,7 +44,9 @@ return {
         ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls", "terraformls", "typos_lsp" },
         handlers = { lsp.default_setup }
       }
-      require('lspconfig').rust_analyzer.setup({
+
+      local lspconfig = require('lspconfig')
+      lspconfig.rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {
             rust = {
@@ -87,7 +89,7 @@ return {
           },
         },
       })
-      require('lspconfig').lua_ls.setup({
+      lspconfig.lua_ls.setup({
         settings = {
           Lua = {
             runtime = {
@@ -108,13 +110,13 @@ return {
           },
         },
       })
-      require('lspconfig').typst_lsp.setup({
+      lspconfig.typst_lsp.setup({
         settings = {
           exportPdf = "never"
         }
       })
-      require('lspconfig').terraformls.setup({})
-      require('lspconfig').typoslsp.setup({})
+      lspconfig.terraformls.setup({})
+      lspconfig.typos_lsp.setup({})
     end
   },
 
