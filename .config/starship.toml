@@ -1,31 +1,25 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = true
-
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-# success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-
-# Disable the package module, hiding it from the prompt completely
-# [package]
-# disabled = true
+add_newline = true # Inserts a blank line between shell prompts
 
 [aws]
-# format = 'on [$symbol($profile )(\($region\) )]($style)'
 style = 'bold #FF9900'
-# symbol = '☁️ '
+region_aliases.us-west-2 = 'us-w2'
 
-[aws.region_aliases]
-us-west-2 = 'us-w2'
-
-[terraform]
-disabled = true
+[cmd_duration]
+min_time = 5_000
 
 [git_branch]
 truncation_length = 8
 truncation_symbol = '…'
 
-[cmd_duration]
-min_time = 5_000
+
+[package]
+format = 'is [$symbol](208)[$version](bold 208) '
+
+[rust]
+version_format = 'v${major}.${minor}'
+
+[terraform]
+disabled = true
