@@ -16,6 +16,9 @@ map({ "n", "i" }, "<DOWN>", "<NOP>", {})
 map({ "n", "i" }, "<RIGHT>", "<NOP>", {})
 map({ "n", "i" }, "<LEFT>", "<NOP>", {})
 
+map({ "n", "i", "v", "c" }, "<LeftMouse>", "<NOP>", {})
+map({ "n", "i", "v", "c" }, "<RightMouse>", "<NOP>", {})
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
