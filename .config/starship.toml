@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true # Inserts a blank line between shell prompts
+add_newline = false # Inserts a blank line between shell prompts
 
 [aws]
 style = 'bold #FF9900'

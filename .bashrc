@@ -87,6 +87,7 @@ exists() {
 }
 
 
+PROMPT_COMMAND="export PROMPT_COMMAND=echo"
 exists starship && eval "$(starship init bash)"
 exists fnm && eval "$(fnm env)"
 exists ~/.gvm && source ~/.gvm/scripts/gvm
