@@ -22,7 +22,6 @@ return {
       { 'williamboman/mason.nvim', },
       { 'williamboman/mason-lspconfig.nvim', },
       { 'hrsh7th/nvim-cmp' },
-      { "j-hui/fidget.nvim",                 opts = {} },
     },
     keys = {
       { "K",          vim.lsp.buf.hover,                   desc = "Hover" },
