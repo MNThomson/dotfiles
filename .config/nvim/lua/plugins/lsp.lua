@@ -1,19 +1,5 @@
 return {
   {
-    'folke/neodev.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      local neodev_status_ok, neodev = pcall(require, 'neodev')
-
-      if not neodev_status_ok then
-        return
-      end
-
-      neodev.setup()
-    end
-  },
-
-  {
     "VonHeikemen/lsp-zero.nvim",
     event = { 'BufReadPre', 'BufNewFile' },
     branch = "v3.x",
@@ -40,7 +26,7 @@ return {
 
       require("mason").setup {}
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "tsserver", "gopls", "terraformls", "typos_lsp" },
+        ensure_installed = { "lua_ls", "rust_analyzer@nightly", "ts_ls", "gopls", "terraformls", "typos_lsp" },
         handlers = { lsp.default_setup }
       }
 
