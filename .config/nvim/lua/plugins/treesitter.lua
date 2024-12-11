@@ -53,5 +53,14 @@ return {
                 max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
             })
         end,
-    }
+    },
+
+
+    {
+        "rayliwell/tree-sitter-rstml",
+        dependencies = { "nvim-treesitter" },
+        build = ":TSUpdate",
+        opts = true,
+    },
+
 }
