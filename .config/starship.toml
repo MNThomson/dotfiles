@@ -1,6 +1,4 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
-
 add_newline = false # Inserts a blank line between shell prompts
 
 [aws]
@@ -13,7 +11,6 @@ min_time = 5_000
 [git_branch]
 truncation_length = 8
 truncation_symbol = '…'
-
 
 [package]
 format = 'is [$symbol](208)[$version](bold 208) '
