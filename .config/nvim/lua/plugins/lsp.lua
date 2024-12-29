@@ -118,7 +118,6 @@ return {
     config = function()
       local cmp = require("cmp")
       vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-      local select_opts = { behavior = cmp.SelectBehavior.Select }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -218,6 +217,7 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
   },
 
   {
