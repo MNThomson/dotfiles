@@ -20,6 +20,8 @@
 
   summary = !"git log --numstat --format=\"\" \"$@\" | awk '{files += 1}{ins += $1}{del += $2} END{print \"total: \"files\" files, \"ins\" insertions(+) \"del\" deletions(-)\"}'"
 
+  stats = !"git log \"$(git mainormaster)\" --author=\"$(git whoami)\" --pretty=tformat: --numstat | awk '{added += $1; removed += $2} END {print \"Added:\", added, \"Removed:\", removed}'"
+
   # Essentially GitHub's compare view: show all 'ahead' changes (incl working tree) vs the merge-base
   diffbranch = !"git diff $(git diffbase)"
   # Diff of branch that's not checked out. Doesn't include working tree (but obv doesnt need to)
