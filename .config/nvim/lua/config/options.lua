@@ -15,11 +15,11 @@ opt.tabstop = 4           -- Number of spaces tabs count for
 opt.shiftwidth = 4        -- Size of an indent
 opt.smartcase = true      -- Don't ignore case with capitals
 opt.smartindent = true    -- Insert indents automatically
-opt.scrolloff = 3
-opt.cmdheight = 0         -- Hide the command bar by default
+opt.scrolloff = 3         -- Keep 3 lines above/below cursor
+--opt.cmdheight = 0       -- Hide the command bar by default
 opt.number = true         -- Print line number
 opt.relativenumber = true -- Relative line numbers
---opt.mouse = ""            -- Enable mouse mode
+--opt.mouse = ""          -- Enable mouse mode
 
 vim.fn.matchadd('errorMsg', [[\s\+$]])
 
