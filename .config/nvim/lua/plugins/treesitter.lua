@@ -21,24 +21,29 @@ return {
                     "javascript",
                     "jsdoc",
                     "json",
+                    "ledger",
                     "lua",
                     "luadoc",
                     "luap",
-                    "markdown",
                     "markdown_inline",
+                    "markdown",
                     "python",
                     "query",
                     "regex",
                     "rust",
                     "tsx",
                     "tsx",
-                    "typst",
                     "typescript",
+                    "typst",
                     "vim",
                     "vimdoc",
                     "yaml",
                 },
             })
+            vim.treesitter.query.set('ledger', 'highlights',
+                ';; extends\n(negative_quantity) @ledger.negative_quantity\n(quantity) @ledger.quantity')
+            vim.api.nvim_set_hl(0, '@ledger.negative_quantity', { link = 'DiagnosticError' })
+            vim.api.nvim_set_hl(0, '@ledger.quantity', { link = 'DiagnosticWarn' })
         end,
     },
 
@@ -55,12 +60,24 @@ return {
         end,
     },
 
-
     {
-        "rayliwell/tree-sitter-rstml",
-        dependencies = { "nvim-treesitter" },
-        build = ":TSUpdate",
-        opts = true,
+        "ledger/vim-ledger",
+        version = false,
+        ft = "ledger",
+        init = function()
+            vim.g.ledger_bin = "hledger"
+            vim.g.ledger_fuzzy_account_completion = 1
+            vim.g.ledger_date_format = "%Y-%m-%d"
+            vim.g.ledger_align_at = 40
+            vim.cmd([[
+        function LedgerSort() range
+          execute a:firstline .. ',' .. a:lastline .. '! hledger -f - -I print'
+          execute a:firstline .. ',' .. a:lastline .. 's/^    /  /g'
+          execute a:firstline .. ',' .. a:lastline .. 'LedgerAlign'
+        endfunction
+        command -range LedgerSort :<line1>,<line2>call LedgerSort()
+      ]])
+        end,
+        opt = {},
     },
-
 }
